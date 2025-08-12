@@ -1,14 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern eCommerce Website with Product Listing and Sorting</title>
-    <script type="module" crossorigin src="/project3/index-D7i2jELs.js"></script>
-    <link rel="stylesheet" crossorigin href="/project3/index-B85BwLcK.css">
+    <title>To-Do App — Local Storage</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <header class="app-header">
+      <h1>To-Do</h1>
+    </header>
+
+    <main class="container">
+      <section class="add-task">
+        <form id="taskForm" autocomplete="off">
+          <div class="row">
+            <input
+              id="taskTitle"
+              type="text"
+              placeholder="Add a new task..."
+              aria-label="Task title"
+              required
+            />
+            <button type="submit" class="primary">Add</button>
+          </div>
+          <textarea
+            id="taskNotes"
+            rows="2"
+            placeholder="Optional notes (press Add to save)"
+            aria-label="Task notes"
+          ></textarea>
+        </form>
+      </section>
+
+      <section class="controls">
+        <div class="search-filter">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search tasks..."
+            aria-label="Search tasks"
+          />
+          <div class="filters" role="tablist" aria-label="Filters">
+            <button class="filter-button active" data-filter="all" aria-selected="true">All</button>
+            <button class="filter-button" data-filter="active" aria-selected="false">Active</button>
+            <button class="filter-button" data-filter="completed" aria-selected="false">Completed</button>
+          </div>
+        </div>
+
+        <div class="bulk-actions">
+          <button id="toggleAll">Toggle all</button>
+          <button id="clearCompleted" class="danger">Clear completed</button>
+        </div>
+      </section>
+
+      <section class="list">
+        <ul id="taskList" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>
+        Data is saved automatically in your browser using localStorage.
+      </small>
+      <div id="stats" class="stats" aria-live="polite"></div>
+    </footer>
+
+    <div id="toast" class="toast" aria-live="polite" role="status"></div>
+
+    <script src="./app.js"></script>
   </body>
-</html>
+</html> 
